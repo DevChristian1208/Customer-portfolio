@@ -1,6 +1,9 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Image from "next/image";
+import { useState } from "react";
+
+const Home = () => {
   return (
     <>
       <div className="w-full h-auto" id="home">
@@ -99,4 +102,6 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
+
+export default Home();
