@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import Header from "@/Components/Header";
 
 const Home = () => {
   return (
@@ -100,8 +101,10 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Header />
     </>
   );
+
 };
 
-export default Home();
+export default Home;
