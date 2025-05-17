@@ -7,6 +7,7 @@ import Header from "@/Components/Header";
 const Home = () => {
   return (
     <>
+      <Header />
       <div className="w-full h-auto" id="home">
         <div className="w-full h-screen relative bg-[#3c3c3c] overflow-hidden">
           <div className="max-w-[1400px] w-full mx-auto h-auto px-10 relative">
@@ -55,23 +56,6 @@ const Home = () => {
                 </div>
                 <div>
                   <a href="#about">
-                    <svg
-                      width="35"
-                      height="35"
-                      viewBox="0 0 247 390"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M123.359,79.775l0,72.843"
-                        stroke="#fff"
-                        strokeWidth="20px"
-                      />
-                      <path
-                        d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359v143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359V123.359Z"
-                        stroke="#fff"
-                        strokeWidth="20px"
-                      />
-                    </svg>
                   </a>
                 </div>
               </div>
@@ -79,10 +63,10 @@ const Home = () => {
               <div className="absolute top-0 right-0 bottom-0 w-[37%] z-[1]">
                 <div className="absolute right-0 bottom-[-10px] w-full">
                   <Image
-                    src="/img/hero/1.png"
+                    src="/file.png"
                     alt=""
-                    width={300}
-                    height={300}
+                    width={2300}
+                    height={700}
                     className=""
                   />
                 </div>
@@ -101,7 +85,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Header />
     </>
   );
 
