@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 import Header from "@/Components/Header";
+import Aboutme from "@/Components/Aboutme";
 
 const Home = () => {
+
   return (
     <>
       <Header />
@@ -80,11 +82,12 @@ const Home = () => {
           </div>
           <div className="absolute bottom-10 left-[50px]">
             <a className="text-white text-[21px]" href="#">
-              hello@aali.com
+              christian.pressig@web.de
             </a>
           </div>
         </div>
       </div>
+      <Aboutme myname="christian"></Aboutme>
     </>
   );
 
