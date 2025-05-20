@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Header from "@/Components/Header";
 import Aboutme from "@/Components/Aboutme";
+import MyProjects from "@/Components/Myprojects";
 
 const Home = () => {
 
@@ -88,6 +89,7 @@ const Home = () => {
         </div>
       </div>
       <Aboutme myname="christian"></Aboutme>
+      <MyProjects />
     </>
   );
 

@@ -11,7 +11,7 @@ type AboutmeProps = {
 const Aboutme = ({myname}: AboutmeProps) => {
 
   return (
-    <div id="about" className="w-full py-24 bg-white">
+    <div id="about" className="w-full py-12 bg-white">
       <div className="max-w-screen-xl mx-auto flex gap-10 px-6">
         {/* Linke Seite */}
         <div className="w-[31%]">
@@ -79,15 +79,7 @@ const Aboutme = ({myname}: AboutmeProps) => {
         </div>
 
         {/* Rechte Seite */}
-        <div className="w-[25%] relative top-[200px] flex flex-col justify-end z-[2]">
-          <div className="relative mr-[50px]">
-            <div
-              className="absolute inset-0 bg-no-repeat bg-cover bg-center rounded-[10px] z-[1]"
-              style={{ backgroundImage: "url('img/about/2.jpg')" }}
-            />
-            <div className="absolute w-[1000px] h-[390px] bg-[#ea4343] left-full -ml-[200px] -top-[100px] moving_effect" data-direction="x" data-reverse="no" />
-          </div>
-        </div>
+
       </div>
     </div>
   );
