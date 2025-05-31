@@ -21,7 +21,7 @@ const Services = () => {
           {/* Starter-Paket */}
           <div className="bg-[#2f2f2f] rounded-xl p-8 group hover:scale-[1.03] transition-all duration-300 cursor-pointer relative overflow-hidden">
             <div className="flex items-start gap-4 mb-4">
-              <Image src="/icons/web.svg" alt="icon" width={48} height={48} />
+              <Image src="/web.svg" alt="icon" width={48} height={48} />
               <div>
                 <h3 className="text-xl font-bold mb-1">Starter Paket</h3>
                 <span className="text-[#ea4343] text-sm font-medium">
@@ -40,7 +40,7 @@ const Services = () => {
           {/* Business-Paket */}
           <div className="bg-[#2f2f2f] rounded-xl p-8 group hover:scale-[1.03] transition-all duration-300 cursor-pointer relative overflow-hidden">
             <div className="flex items-start gap-4 mb-4">
-              <Image src="/icons/building.svg" alt="icon" width={48} height={48} />
+              <Image src="/web.svg" alt="icon" width={48} height={48} />
               <div>
                 <h3 className="text-xl font-bold mb-1">Business Paket</h3>
                 <span className="text-[#ea4343] text-sm font-medium">
@@ -60,7 +60,7 @@ const Services = () => {
           {/* Premium-Paket */}
           <div className="bg-[#2f2f2f] rounded-xl p-8 group hover:scale-[1.03] transition-all duration-300 cursor-pointer relative overflow-hidden">
             <div className="flex items-start gap-4 mb-4">
-              <Image src="/icons/ux.svg" alt="icon" width={48} height={48} />
+              <Image src="/web.svg" alt="icon" width={48} height={48} />
               <div>
                 <h3 className="text-xl font-bold mb-1">Premium Paket</h3>
                 <span className="text-[#ea4343] text-sm font-medium">

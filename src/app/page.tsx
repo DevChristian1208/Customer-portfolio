@@ -7,6 +7,7 @@ import Aboutme from "@/Components/Aboutme";
 import MyProjects from "@/Components/Myprojects";
 import Services from "@/Components/Services";
 import Contact from "@/Components/Contacme";
+import Footer from "@/Components/Footer";
 
 const Home = () => {
   const isSunny: boolean = !false;
@@ -114,13 +115,14 @@ const Home = () => {
                 className="absolute top-0 right-0 bottom-0 w-[37%] z-[1] transition-transform duration-300 ease-out will-change-transform"
               >
                 <div className="absolute right-0 bottom-[-10px] w-full">
+                <div className="relative w-[500px] h-[700px]">
                   <Image
                     src="/file.png"
                     alt=""
-                    width={2300}
-                    height={700}
-                    className="pointer-events-none select-none"
+                    fill
+                    className="object-contain"
                   />
+                </div>
                 </div>
 
                 {/* Deko-Elemente */}
@@ -152,12 +154,7 @@ const Home = () => {
       <MyProjects />
       <Services />
       <Contact />
-
-      {/* Debug Anzeige */}
-      <div>
-        <p>{isSunny ? "Heute ist es sonnig" : "Heute ist es nicht sonnig"}</p>
-        <p>{isLoggedin ? "Du bist eingelogt" : "Du bist nicht eingelogt"}</p>
-      </div>
+      <Footer />
     </>
   );
 };

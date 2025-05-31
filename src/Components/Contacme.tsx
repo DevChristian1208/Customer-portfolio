@@ -9,7 +9,7 @@ const Contact = () => {
         {/* Titel */}
         <div className="text-center mb-16">
           <span className="text-[#ea4343] font-semibold uppercase text-sm block mb-2">Get in Touch</span>
-          <h2 className="text-4xl font-bold">Connect with Me with Confidence</h2>
+          <h2 className="text-4xl font-bold text-[60px]">Contact me</h2>
         </div>
 
         {/* Inhalt */}
@@ -24,7 +24,7 @@ const Contact = () => {
                 <Image src="./call.svg" alt="call" width={32} height={32} />
                 <div>
                   <span className="block text-sm text-gray-400">Call me</span>
-                  <h3 className="text-lg font-bold">+49 176 1234 5678</h3>
+                  <h3 className="text-lg font-bold">+49 1756453064</h3>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -33,7 +33,7 @@ const Contact = () => {
                   <span className="block text-sm text-gray-400">Email</span>
                   <h3 className="text-lg font-bold">
                     <a href="mailto:christian@web.de" className="hover:text-[#ea4343] transition-all duration-200">
-                      christian@web.de
+                      christian.pressig@web.de
                     </a>
                   </h3>
                 </div>
@@ -59,7 +59,7 @@ const Contact = () => {
               type="submit"
               className="bg-[#ea4343] text-white font-bold px-6 py-3 rounded-md hover:bg-transparent hover:text-white border border-[#ea4343] transition-all flex items-center gap-2"
             >
-              Submit Message
+              Absenden
               <Image src="/send.svg" alt="send" width={18} height={18} />
             </button>
           </form>

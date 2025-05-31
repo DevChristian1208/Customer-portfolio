@@ -3,7 +3,7 @@ import React from "react";
 
 const MyProjects = () => {
   return (
-    <section id="portfolio" className="pt-[100px] bg-red-800">
+    <section id="portfolio" className="pt-[80px] pb-[80px] bg-red-800">
       <div className="w-full">
         <div className="container mx-auto px-4">
           <div className="text-center text-white mb-10">
@@ -59,7 +59,7 @@ const MyProjects = () => {
                 </div>
                 <div className="flex gap-3">
                   <a href="https://github.com/deinlink" target="_blank" className="border border-pink-500 px-4 py-2 rounded hover:bg-pink-500 transition text-sm">GitHub</a>
-                  <a href="https://deinprojekt.de" target="_blank" className="bg-[#00ffd9] text-black px-4 py-2 rounded hover:bg-opacity-80 transition text-sm">Live Test</a>
+                  <a href="http://join.christianseidel-developer.de/" target="_blank" className="bg-[#00ffd9] text-black px-4 py-2 rounded hover:bg-opacity-80 transition text-sm">Live Test</a>
                 </div>
               </div>
             </div>
@@ -76,8 +76,8 @@ const MyProjects = () => {
                   </p>
                 </div>
                 <div className="flex gap-3">
-                  <a href="https://github.com/deinlink" target="_blank" className="border border-pink-500 px-4 py-2 rounded hover:bg-pink-500 transition text-sm">GitHub</a>
-                  <a href="https://deinspiel.de" target="_blank" className="bg-[#00ffd9] text-black px-4 py-2 rounded hover:bg-opacity-80 transition text-sm">Live Test</a>
+                  <a href="https://github.com/DevChristian1208/El-Pollo-Loco" target="_blank" className="border border-pink-500 px-4 py-2 rounded hover:bg-pink-500 transition text-sm">GitHub</a>
+                  <a href="http://elpolloloco.christianseidel-developer.de/" target="_blank" className="bg-[#00ffd9] text-black px-4 py-2 rounded hover:bg-opacity-80 transition text-sm">Live Test</a>
                 </div>
               </div>
             </div>
