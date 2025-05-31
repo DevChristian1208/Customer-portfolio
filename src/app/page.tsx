@@ -5,6 +5,8 @@ import { useEffect, useRef } from "react";
 import Header from "@/Components/Header";
 import Aboutme from "@/Components/Aboutme";
 import MyProjects from "@/Components/Myprojects";
+import Services from "@/Components/Services";
+import Contact from "@/Components/Contacme";
 
 const Home = () => {
   const isSunny: boolean = !false;
@@ -148,6 +150,8 @@ const Home = () => {
       {/* Sektionen */}
       <Aboutme myname="christian" />
       <MyProjects />
+      <Services />
+      <Contact />
 
       {/* Debug Anzeige */}
       <div>
