@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import Header from "@/Components/Header";
 import Aboutme from "@/Components/Aboutme";
 import MyProjects from "@/Components/Myprojects";
@@ -10,17 +10,49 @@ const Home = () => {
   const isSunny: boolean = !false;
   const isLoggedin: boolean = false;
   const names: Array<string> = ["Christian", "Max"];
-
   const persons: [string, number] = ["christian", 26];
   const persons2: (string | number)[] = [265, "asdöfklj"];
 
-  function checkWeather() {
-    if (isSunny) {
-      console.log("Es ist heute sonnig");
-    } else {
-      console.log("Heute ist es nicht sonnig");
-    }
-  }
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = imageContainerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      const xPercent = (e.clientX / vw - 0.5) * 2; // -1 bis 1
+      const yPercent = (e.clientY / vh - 0.5) * 2;
+
+      const offsetX = xPercent * 15;
+      const offsetY = yPercent * 15;
+      const rotateX = yPercent * -5;
+      const rotateY = xPercent * 5;
+
+      container.style.transform = `
+        translate(${offsetX}px, ${offsetY}px)
+        scale(1.02)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+      `;
+    };
+
+    const reset = () => {
+      if (imageContainerRef.current) {
+        imageContainerRef.current.style.transform = "translate(0, 0) scale(1) rotateX(0deg) rotateY(0deg)";
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", reset);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", reset);
+    };
+  }, []);
 
   return (
     <>
@@ -74,25 +106,27 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Bildbereich */}
-              <div className="absolute top-0 right-0 bottom-0 w-[37%] z-[1]">
-                {/* DEIN BILD */}
+              {/* Rechte Seite (Bild + Hintergründe) mit Effekten */}
+              <div
+                ref={imageContainerRef}
+                className="absolute top-0 right-0 bottom-0 w-[37%] z-[1] transition-transform duration-300 ease-out will-change-transform"
+              >
                 <div className="absolute right-0 bottom-[-10px] w-full">
                   <Image
                     src="/file.png"
                     alt=""
                     width={2300}
                     height={700}
+                    className="pointer-events-none select-none"
                   />
                 </div>
 
-                {/* ROTE HINTERGRUNDELEMENTE */}
+                {/* Deko-Elemente */}
                 <div className="absolute top-[15%] right-[25%] w-[100px] h-[100px] bg-[#ea4343] z-[-1]"></div>
-                <div className="absolute top-[50%] right-[65%] w-[250px] h-[250px] bg-[#ea4343] z-[-1]"></div>
+                <div className="absolute top-[50%] right-[65%] w-[250px] h-[250px] bg-[#ea4343] z-[-1] blur-xl opacity-60"></div>
                 <div className="absolute top-[20%] right-[30%] w-[250px] h-[300px] border-[4px] border-white z-[-1]"></div>
 
-
-                {/* Optionaler Text im Hintergrund */}
+                {/* Hintergrund-Schrift */}
                 <h3 className="absolute top-1/2 -translate-y-1/2 right-[-145px] z-[-2] mt-[-70px]">
                   <span className="text-[260px] text-transparent font-montserrat font-bold stroke-[3px] stroke-white/30">
                     Aali
@@ -102,7 +136,7 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Email unten */}
+          {/* Email */}
           <div className="absolute bottom-10 left-[50px]">
             <a className="text-white text-[21px]" href="#">
               christian.pressig@web.de
@@ -111,11 +145,11 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Weitere Sektionen */}
+      {/* Sektionen */}
       <Aboutme myname="christian" />
       <MyProjects />
 
-      {/* Wetter & Login Check */}
+      {/* Debug Anzeige */}
       <div>
         <p>{isSunny ? "Heute ist es sonnig" : "Heute ist es nicht sonnig"}</p>
         <p>{isLoggedin ? "Du bist eingelogt" : "Du bist nicht eingelogt"}</p>
