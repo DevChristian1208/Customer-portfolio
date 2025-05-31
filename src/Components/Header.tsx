@@ -1,5 +1,6 @@
 "use client";
 
+import { type } from "os";
 import { useEffect, useState } from "react";
 
 const menuItems = [
@@ -9,6 +10,11 @@ const menuItems = [
   { href: "#service", label: "Service" },
   { href: "#contact", label: "Contact" },
 ];
+
+type menuItems = {
+  href: string, 
+  label: string, 
+}
 
 const Header = () => {
   const[scrolled, setScrolled] = useState<boolean>(false);
@@ -26,7 +32,7 @@ const Header = () => {
     <div
       className={`fixed top-0 left-0 right-0 z-10 transition-all duration-300 ${
         scrolled ? "bg-white shadow-md" : "bg-transparent"
-      }`}
+      }`} 
     >
       <div className="container mx-auto px-4">
         <div className="w-full h-auto flex items-center justify-between py-[30px] transition-all duration-300">

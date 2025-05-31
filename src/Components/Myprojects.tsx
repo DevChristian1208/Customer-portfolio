@@ -8,23 +8,9 @@ const MyProjects = () => {
         <div className="container mx-auto px-4">
           <div className="text-center text-white mb-10">
             <span className="block text-lg">Selected works</span>
-            <h3 className="text-3xl font-bold">Check my portfolio</h3>
+            <h3 className="text-5xl font-bold">Meine Projekte</h3>
           </div>
 
-          {/* Filter */}
-          <div className="text-center py-10">
-            <ul className="inline-flex flex-wrap justify-center gap-x-10">
-              {["All", "Vimeo", "Youtube", "Soundcloud", "Image", "Detail"].map((label, idx) => (
-                <li key={idx}>
-                  <a href="#" className="text-white font-bold transition duration-300 hover:text-red-400">
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Portfolio Grid (Demo Items) */}
           <div className="w-full">
             <ul className="flex flex-wrap -ml-6">
               {[1, 2, 3, 4, 5, 6].map((item, index) => (
@@ -68,7 +54,7 @@ const MyProjects = () => {
                   <h3 className="text-2xl font-bold mb-2">Join</h3>
                   <p className="text-[#00ffd9] mb-2">JavaScript | HTML | CSS | Firebase</p>
                   <p className="text-sm text-gray-300 mb-4">
-                    Task manager inspired by the Kanban System. Create and organize tasks using drag & drop.
+                  Ein Aufgabenmanager basierend auf dem Kanban-Prinzip – Aufgaben lassen sich per Drag & Drop erstellen und organisieren.
                   </p>
                 </div>
                 <div className="flex gap-3">
@@ -86,7 +72,7 @@ const MyProjects = () => {
                   <h3 className="text-2xl font-bold mb-2">El Pollo Loco</h3>
                   <p className="text-[#00ffd9] mb-2">JavaScript | HTML | CSS | OOP</p>
                   <p className="text-sm text-gray-300 mb-4">
-                    Jump and run game based on object-oriented programming. Help Pepe fight the crazy hen.
+                  Ein Jump’n’Run-Spiel auf Basis objektorientierter Programmierung: Hilf Pepe im Kampf gegen die verrückte Henne!
                   </p>
                 </div>
                 <div className="flex gap-3">
