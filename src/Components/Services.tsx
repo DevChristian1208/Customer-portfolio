@@ -25,7 +25,7 @@ const Services = () => {
               <div>
                 <h3 className="text-xl font-bold mb-1">Starter Paket</h3>
                 <span className="text-[#ea4343] text-sm font-medium">
-                  ab <span className="font-bold">€399</span>
+                  ab <span className="font-bold text-[22px]">€399</span>
                 </span>
               </div>
             </div>
@@ -44,7 +44,7 @@ const Services = () => {
               <div>
                 <h3 className="text-xl font-bold mb-1">Business Paket</h3>
                 <span className="text-[#ea4343] text-sm font-medium">
-                  ab <span className="font-bold">€699</span>
+                  ab <span className="font-bold text-[22px]">€699</span>
                 </span>
               </div>
             </div>
@@ -64,7 +64,7 @@ const Services = () => {
               <div>
                 <h3 className="text-xl font-bold mb-1">Premium Paket</h3>
                 <span className="text-[#ea4343] text-sm font-medium">
-                  ab <span className="font-bold">€999</span>
+                  ab <span className="font-bold text-[22px]">€999</span>
                 </span>
               </div>
             </div>
