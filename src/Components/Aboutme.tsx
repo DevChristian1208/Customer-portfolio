@@ -6,15 +6,14 @@ import { useState } from "react";
 
 type AboutmeProps = {
   myname: string;
-}
+};
 
-const Aboutme = ({myname}: AboutmeProps) => {
-
+const Aboutme = ({ myname }: AboutmeProps) => {
   return (
     <div id="about" className="w-full py-12 bg-white">
       <div className="max-w-screen-xl mx-auto flex gap-10 px-6">
         {/* Linke Seite */}
-        <div className="w-[31%]">
+        <div className="hidden lg:block w-[31%]">
           <div className="relative ml-[100px]">
             <img
               src="/IMG_3721.jpg"
@@ -22,15 +21,15 @@ const Aboutme = ({myname}: AboutmeProps) => {
               className="relative w-full opacity-0"
             />
             <div
-              className="absolute inset-0 bg-no-repeat bg-cover bg-center rounded-[10px] z-[1]"
+              className="hidden lg:block absolute inset-0 bg-no-repeat bg-cover bg-center rounded-[10px] z-[1]"
               style={{ backgroundImage: "url('/IMG_3721.jpg')" }}
             />
             <span
-              className="absolute w-[270px] h-[270px] bg-[#ea4343] bottom-[-80px] left-[-65px] z-0 moving_effect"
+              className="hidden lg:block absolute w-[270px] h-[270px] bg-[#ea4343] bottom-[-80px] left-[-65px] z-0 moving_effect"
               data-direction="y"
               data-reverse="yes"
             />
-            <span className="absolute w-[1000px] h-[300px] right-full top-1/2 -translate-y-1/2 -mr-[50px] z-[2]">
+            <span className="hidden lg:block absolute w-[1000px] h-[300px] right-full top-1/2 -translate-y-1/2 -mr-[50px] z-[2]">
               <span
                 className="absolute w-full h-full border-[6px] border-white moving_effect"
                 data-direction="x"
@@ -58,12 +57,15 @@ const Aboutme = ({myname}: AboutmeProps) => {
           </div>
           <div className="text-base text-gray-700 leading-relaxed mb-12">
             <p className="mb-12 text-[20px]">
-              Hi! Mein Name ist Christian und ich bin Webentwickler im Frontend Bereich
+              Hi! Mein Name ist Christian und ich bin Webentwickler im Frontend
+              Bereich
             </p>
             <p className="text-[20px]">
-              Ich entwickle moderne und benutzerfreundliche Websites für lokale Unternehmen.
-              Ob Restaurant, Arztpraxis oder Handwerksbetrieb – ich biete individuelle Weblösungen, die klar, funktional und leicht zu pflegen sind.
-              Einfach, professionell und genau auf Dein Geschäft zugeschnitten.
+              Ich entwickle moderne und benutzerfreundliche Websites für lokale
+              Unternehmen. Ob Restaurant, Arztpraxis oder Handwerksbetrieb – ich
+              biete individuelle Weblösungen, die klar, funktional und leicht zu
+              pflegen sind. Einfach, professionell und genau auf Dein Geschäft
+              zugeschnitten.
             </p>
           </div>
           <div>
@@ -79,7 +81,6 @@ const Aboutme = ({myname}: AboutmeProps) => {
         </div>
 
         {/* Rechte Seite */}
-
       </div>
     </div>
   );
