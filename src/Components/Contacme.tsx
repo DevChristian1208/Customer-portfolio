@@ -1,9 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const Contact = () => {
+  const [successMessage, setsuccessMessage] = useState("");
+  const [visible, setVisible] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -24,15 +27,38 @@ const Contact = () => {
     });
 
     if (res.ok) {
-      alert("Mail gesendet!");
+      setsuccessMessage("Mail wurde gesendet!");
+      setVisible(true);
       form.reset();
     } else {
-      alert("Fehler beim Senden.");
+      setsuccessMessage("Fehler beim Senden.");
+      setVisible(true);
     }
+
+    setTimeout(() => {
+      setVisible(false);
+    }, 1500);
+
+    setTimeout(() => {
+      setsuccessMessage("");
+    }, 2000);
   };
 
   return (
     <section id="contact" className="bg-[#3c3c3c] text-white py-24 px-4">
+      {/* Erfolgsmeldung fix und unten zentriert */}
+      {successMessage && (
+        <div className="fixed bottom-16 left-0 w-full flex justify-center px-4 z-50">
+          <div
+            className={`transition-opacity duration-500 w-[80%] ${
+              visible ? "opacity-100" : "opacity-0"
+            } bg-[#ea4343] text-white p-4 rounded-md shadow-lg text-center`}
+          >
+            {successMessage}
+          </div>
+        </div>
+      )}
+
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-[#ea4343] font-semibold uppercase text-sm block mb-2">
