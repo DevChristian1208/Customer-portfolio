@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { type } from "os";
-import { useState } from "react";
 
 type AboutmeProps = {
   myname: string;
@@ -15,9 +13,11 @@ const Aboutme = ({ myname }: AboutmeProps) => {
         {/* Linke Seite */}
         <div className="hidden lg:block w-[31%]">
           <div className="relative ml-[100px]">
-            <img
+            <Image
               src="/IMG_3721.jpg"
-              alt=""
+              alt="Profilbild"
+              width={400}
+              height={400}
               className="relative w-full opacity-0"
             />
             <div
@@ -46,7 +46,7 @@ const Aboutme = ({ myname }: AboutmeProps) => {
               About Me
             </span>
             <h3 className="text-[65px] font-bold leading-tight">
-              I'm <span className="text-[#ea4343]">Christian</span>
+              I&apos;m <span className="text-[#ea4343]">{myname}</span>
             </h3>
             <h3 className="text-[48px] font-bold leading-tight">
               <span className="text-[#ea4343]">Webentwickler</span>
@@ -57,8 +57,8 @@ const Aboutme = ({ myname }: AboutmeProps) => {
           </div>
           <div className="text-base text-gray-700 leading-relaxed mb-12">
             <p className="mb-12 text-[20px]">
-              Hi! Mein Name ist Christian und ich bin Webentwickler im Frontend
-              Bereich
+              Hi! Mein Name ist {myname} und ich bin Webentwickler im Frontend
+              Bereich.
             </p>
             <p className="text-[20px]">
               Ich entwickle moderne und benutzerfreundliche Websites für lokale
@@ -75,12 +75,15 @@ const Aboutme = ({ myname }: AboutmeProps) => {
               className="inline-flex items-center gap-2 bg-[#ea4343] text-white px-6 py-3 rounded-md hover:bg-[#d03030] transition"
             >
               <span>Download CV</span>
-              <img src="/download.svg" alt="" className="w-4 h-4" />
+              <Image
+                src="/download.svg"
+                alt="Download"
+                width={16}
+                height={16}
+              />
             </a>
           </div>
         </div>
-
-        {/* Rechte Seite */}
       </div>
     </div>
   );
