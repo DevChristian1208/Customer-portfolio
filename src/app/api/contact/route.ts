@@ -1,29 +1,33 @@
-import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+// pages/api/contact.ts (TypeScript-Datei)
 
-export async function POST(request: NextRequest) {
-  try {
-    const data = await request.json();
-    const { name, email, phone, message } = data;
+import { NextApiRequest, NextApiResponse } from 'next';  // Importiere die richtigen Typen
+import nodemailer from 'nodemailer';
 
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: "Bitte alle Pflichtfelder ausfüllen." },
-        { status: 400 }
-      );
-    }
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // Überprüfen, ob es eine POST-Anfrage ist
+  if (req.method === 'POST') {
+    try {
+      // Extrahiere die Daten aus dem Request-Body
+      const { name, email, phone, message } = req.body;
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: process.env.SMTP_SECURE === "true", 
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+      // Überprüfen, ob alle Pflichtfelder ausgefüllt sind
+      if (!name || !email || !message) {
+        return res.status(400).json({ error: 'Bitte alle Pflichtfelder ausfüllen.' });
+      }
 
-    const mailOptions = {
+      // Erstelle den SMTP-Transporter mit den Umgebungsvariablen
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT),
+        secure: process.env.SMTP_SECURE === 'true',
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      });
+
+      // Definiere die E-Mail-Optionen
+      const mailOptions = {
         from: process.env.SMTP_USER,
         replyTo: email,
         to: process.env.SMTP_USER,
@@ -31,17 +35,16 @@ export async function POST(request: NextRequest) {
         text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`,
       };
 
-    await transporter.sendMail(mailOptions);
+      // Sende die E-Mail
+      await transporter.sendMail(mailOptions);
 
-    return NextResponse.json(
-      { message: "Mail erfolgreich gesendet!" },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json(
-      { error: "Fehler beim Verarbeiten." },
-      { status: 500 }
-    );
+      return res.status(200).json({ message: 'Mail erfolgreich gesendet!' });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Fehler beim Verarbeiten.' });
+    }
+  } else {
+    // Wenn es keine POST-Anfrage ist, gib eine Methode-nicht-erlaubt-Antwort zurück
+    return res.status(405).json({ error: 'Methode nicht erlaubt' });
   }
 }
