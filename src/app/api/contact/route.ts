@@ -1,50 +1,54 @@
-// pages/api/contact.ts (TypeScript-Datei)
+// /src/app/api/contact/route.ts
 
-import { NextApiRequest, NextApiResponse } from 'next';  // Importiere die richtigen Typen
 import nodemailer from 'nodemailer';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Überprüfen, ob es eine POST-Anfrage ist
-  if (req.method === 'POST') {
-    try {
-      // Extrahiere die Daten aus dem Request-Body
-      const { name, email, phone, message } = req.body;
+export async function POST(req: Request) {
+  try {
+    // Parsing the request body to get the data
+    const data = await req.json();  // Using req.json() for Next.js 13+ routes
+    const { name, email, phone, message } = data;
 
-      // Überprüfen, ob alle Pflichtfelder ausgefüllt sind
-      if (!name || !email || !message) {
-        return res.status(400).json({ error: 'Bitte alle Pflichtfelder ausfüllen.' });
-      }
-
-      // Erstelle den SMTP-Transporter mit den Umgebungsvariablen
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT),
-        secure: process.env.SMTP_SECURE === 'true',
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
-
-      // Definiere die E-Mail-Optionen
-      const mailOptions = {
-        from: process.env.SMTP_USER,
-        replyTo: email,
-        to: process.env.SMTP_USER,
-        subject: `Neue Nachricht von ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`,
-      };
-
-      // Sende die E-Mail
-      await transporter.sendMail(mailOptions);
-
-      return res.status(200).json({ message: 'Mail erfolgreich gesendet!' });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: 'Fehler beim Verarbeiten.' });
+    // Validate if all mandatory fields are provided
+    if (!name || !email || !message) {
+      return new Response(
+        JSON.stringify({ error: 'Bitte alle Pflichtfelder ausfüllen.' }),
+        { status: 400 }
+      );
     }
-  } else {
-    // Wenn es keine POST-Anfrage ist, gib eine Methode-nicht-erlaubt-Antwort zurück
-    return res.status(405).json({ error: 'Methode nicht erlaubt' });
+
+    // Create the nodemailer transport
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,     // SMTP Host, z.B. smtp.strato.de
+      port: Number(process.env.SMTP_PORT), // SMTP Port, z.B. 465 (SSL) oder 587 (TLS)
+      secure: process.env.SMTP_SECURE === 'true',  // Secure connection (SSL)
+      auth: {
+        user: process.env.SMTP_USER,   // E-Mail-Adresse für den SMTP-Server
+        pass: process.env.SMTP_PASS,   // SMTP-Passwort
+      },
+    });
+
+    // Define the email options
+    const mailOptions = {
+      from: process.env.SMTP_USER,  // E-Mail, von der die Nachricht gesendet wird
+      replyTo: email,               // E-Mail des Absenders (für Antworten)
+      to: process.env.SMTP_USER,    // Die E-Mail-Adresse, an die die Nachricht gesendet wird
+      subject: `Neue Nachricht von ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`,  // Der Text der E-Mail
+    };
+
+    // Send the email
+    await transporter.sendMail(mailOptions);
+
+    // Return success response
+    return new Response(
+      JSON.stringify({ message: 'Mail erfolgreich gesendet!' }),
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error(error);
+    return new Response(
+      JSON.stringify({ error: 'Fehler beim Verarbeiten.' }),
+      { status: 500 }
+    );
   }
 }
