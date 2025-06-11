@@ -14,6 +14,7 @@ const menuItems = [
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const isImpressum = pathname === "/impressum";
   const isDatenschutz = pathname === "/datenschutz";
@@ -72,13 +73,31 @@ const Header = () => {
                 <span className="cursor-pointer hover:text-[#ea4343] hidden lg:flex">
                   DE
                 </span>
-                <Image
-                  className="flex lg:hidden cursor-pointer"
-                  src="/burgermenu.png"
-                  alt="Burger Menu"
-                  width={30}
-                  height={30}
-                />
+
+                {/* Hamburger Menu Button */}
+                <div
+                  className="lg:hidden flex items-center cursor-pointer"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                  {/* Hamburger icon */}
+                  <div className="flex flex-col items-center justify-between space-y-2">
+                    <div
+                      className={`h-1 w-6 bg-black transition-all duration-300 ${
+                        isMenuOpen ? "rotate-45 translate-y-2" : ""
+                      }`}
+                    ></div>
+                    <div
+                      className={`h-1 w-6 bg-black transition-all duration-300 ${
+                        isMenuOpen ? "opacity-0" : ""
+                      }`}
+                    ></div>
+                    <div
+                      className={`h-1 w-6 bg-black transition-all duration-300 ${
+                        isMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                      }`}
+                    ></div>
+                  </div>
+                </div>
               </div>
             </div>
           ) : (
@@ -93,6 +112,28 @@ const Header = () => {
             </div>
           )}
         </div>
+
+        {/* Hamburger Menu (on mobile) */}
+        {isMenuOpen && (
+          <div className="lg:hidden absolute top-[70px] left-0 right-0 bg-white z-10 shadow-md">
+            <ul className="flex flex-col items-center py-4">
+              {menuItems.map((item, index) => (
+                <li
+                  key={index}
+                  className="py-2"
+                  onClick={() => setIsMenuOpen(false)} // Close menu on item click
+                >
+                  <a
+                    href={item.href}
+                    className={`no-underline font-semibold text-[#ea4343] transition-all duration-300 hover:text-[#ea4343]`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
