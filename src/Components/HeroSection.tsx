@@ -53,7 +53,6 @@ const HeroSection = () => {
       <div className="w-full h-auto" id="home">
         <div className="w-full min-h-screen relative bg-[#3c3c3c] overflow-hidden">
           <div className="max-w-[1400px] mx-auto w-full px-6 md:px-10 py-12 md:py-20 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 relative">
-            {/* Textbereich */}
             <div className="w-full lg:w-1/2 text-center lg:text-left">
               <span className="font-josefin text-[22px] md:text-[25px] font-bold text-white tracking-tight mb-4 inline-block">
                 Hallo ich bin
@@ -90,16 +89,13 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Bildbereich */}
             <div
               ref={imageContainerRef}
               className="relative w-full lg:w-[40%] h-[400px] sm:h-[500px] lg:h-[700px] transition-transform duration-300 ease-out will-change-transform"
             >
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full top-[25px]">
                 <Image src="/file.png" alt="" fill className="object-contain" />
               </div>
-
-              {/* Deko-Elemente */}
               <div className="hidden sm:block">
                 <div className="absolute top-[15%] right-[25%] w-[100px] h-[100px] bg-[#ea4343] z-[-1]"></div>
                 <div className="absolute top-[50%] right-[65%] w-[250px] h-[250px] bg-[#ea4343] z-[-1] blur-xl opacity-60"></div>
@@ -113,7 +109,6 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Email */}
           <div className="absolute bottom-6 left-4 md:left-[50px]">
             <a className="text-white text-[16px] md:text-[21px]" href="#">
               christian.pressig@web.de

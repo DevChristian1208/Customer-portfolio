@@ -7,7 +7,6 @@ const MyProjects = () => {
       id="portfolio"
       className="pt-[80px] pb-[80px] bg-gradient-to-br from-[#1e1e2f] via-[#2a2a3d] to-[#1e1e2f] relative overflow-hidden"
     >
-      {/* Deko-Kreise */}
       <div className="absolute top-[-60px] left-[-40px] w-[300px] h-[300px] bg-[#ea4343] opacity-30 blur-3xl rounded-full z-0" />
       <div className="absolute bottom-[-60px] right-[-40px] w-[250px] h-[250px] bg-[#00ffd9] opacity-20 blur-2xl rounded-full z-0" />
 
@@ -16,45 +15,6 @@ const MyProjects = () => {
           <div className="text-center text-white mb-10">
             <span className="block text-lg">Selected works</span>
             <h3 className="text-5xl font-bold">Meine Projekte</h3>
-          </div>
-
-          <div className="w-full">
-            <ul className="flex flex-wrap -ml-6">
-              {[1, 2, 3, 4, 5, 6].map((item, index) => (
-                <li key={index} className="w-full sm:w-1/2 lg:w-1/3 pl-6 mb-6">
-                  <div className="relative w-full overflow-hidden rounded-xl group">
-                    <div className="relative">
-                      <img
-                        src={`/img/thumbs/1-1.jpg`}
-                        alt=""
-                        className="opacity-0 w-full"
-                      />
-                      <div
-                        className="absolute inset-0 bg-cover bg-center rounded-xl"
-                        style={{
-                          backgroundImage: `url(/img/portfolio/${item}.jpg)`,
-                        }}
-                      />
-                    </div>
-                    <div className="absolute inset-0 bg-red-500/70 opacity-0 group-hover:opacity-100 transition duration-300 z-10 rounded-xl" />
-                    <img
-                      src="/img/svg/social/vimeo.svg"
-                      alt="icon"
-                      className="absolute w-12 h-12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition duration-300"
-                    />
-                    <div className="absolute bottom-0 left-0 w-full text-center px-4 pb-6 z-20 opacity-0 group-hover:opacity-100 transition duration-300">
-                      <span className="text-white text-sm block mb-1">
-                        Vimeo
-                      </span>
-                      <h3 className="text-white text-xl font-bold">
-                        Title {item}
-                      </h3>
-                    </div>
-                    <a href="#" className="absolute inset-0 z-30" />
-                  </div>
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div className="w-full mt-20 flex flex-col gap-12">

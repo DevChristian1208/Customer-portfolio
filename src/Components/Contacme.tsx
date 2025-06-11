@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 const Contact = () => {
-  const [successMessage, setsuccessMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [visible, setVisible] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,27 +20,39 @@ const Contact = () => {
         .value,
     };
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      // Hier muss der Endpunkt angepasst werden
+      const res = await fetch("/api/contact/", {
+        // Die korrekte URL in App Directory Struktur
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    if (res.ok) {
-      setsuccessMessage("Mail wurde gesendet!");
-      setVisible(true);
-      form.reset();
-    } else {
-      setsuccessMessage("Fehler beim Senden.");
+      // Überprüfe, ob die Antwort ok ist und nicht leer
+      if (res.ok) {
+        const data = await res.json();
+        setSuccessMessage(data.message || "Mail wurde gesendet!");
+        setVisible(true);
+        form.reset();
+      } else {
+        const data = await res.json();
+        setSuccessMessage(data.error || "Fehler beim Senden.");
+        setVisible(true);
+      }
+    } catch (error) {
+      console.error("Fehler beim Absenden der Anfrage:", error);
+      setSuccessMessage("Fehler beim Senden. Bitte versuche es später erneut.");
       setVisible(true);
     }
 
+    // Verstecke die Erfolgsmeldung nach 1.5s
     setTimeout(() => {
       setVisible(false);
     }, 1500);
 
     setTimeout(() => {
-      setsuccessMessage("");
+      setSuccessMessage("");
     }, 2000);
   };
 
