@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-// Die POST Methode für die API definieren
+// POST-Methode für die API definieren
 export async function POST(request: NextRequest) {
   try {
-    const data = await request.json(); // Daten aus der Anfrage extrahieren
+    // Extrahiere die Daten aus der Anfrage
+    const data = await request.json();
     const { name, email, phone, message } = data;
 
     // Validierung der Pflichtfelder
@@ -15,27 +16,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Erstelle den SMTP-Transporter
+    // Erstelle den SMTP-Transporter für Nodemailer
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: process.env.SMTP_SECURE === "true", // Wenn Port 465, dann true
+      host: process.env.SMTP_HOST,        // Host deines SMTP-Servers
+      port: Number(process.env.SMTP_PORT), // SMTP Port (z.B. 465 für SSL)
+      secure: process.env.SMTP_SECURE === "true",  // Wenn der Port 465 ist, dann true
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: process.env.SMTP_USER,      // Dein SMTP-Benutzer (E-Mail)
+        pass: process.env.SMTP_PASS,      // Dein SMTP-Passwort
       },
     });
 
-    // Definiere die E-Mail-Optionen
+    // E-Mail-Optionen definieren
     const mailOptions = {
-      from: process.env.SMTP_USER,
-      replyTo: email,
-      to: process.env.SMTP_USER,
+      from: process.env.SMTP_USER,     // Absender
+      replyTo: email,                  // Antwort an die Absender-E-Mail-Adresse
+      to: process.env.SMTP_USER,       // E-Mail-Adresse, an die die Nachricht gesendet wird
       subject: `Neue Nachricht von ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`, // E-Mail-Inhalt
     };
 
-    // E-Mail senden
+    // Sende die E-Mail
     await transporter.sendMail(mailOptions);
 
     // Erfolgreiche Antwort zurückgeben
@@ -45,6 +46,7 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Fehler beim Verarbeiten:", error);
+    // Fehlerhafte Antwort zurückgeben
     return NextResponse.json(
       { error: "Fehler beim Verarbeiten der Anfrage. Bitte versuche es später erneut." },
       { status: 500 }
