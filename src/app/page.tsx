@@ -4,7 +4,6 @@ import MyProjects from "@/Components/Myprojects";
 import Services from "@/Components/Services";
 import Contact from "@/Components/Contacme";
 import Footer from "@/Components/Footer";
-import MySkills from "@/Components/Myskills";
 
 export default function Home() {
   return (
