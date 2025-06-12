@@ -69,7 +69,6 @@ const Header = () => {
                   DE
                 </span>
 
-                {/* Hamburger Menu Button */}
                 <div
                   className="lg:hidden flex items-center cursor-pointer ml-4 group"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -107,7 +106,6 @@ const Header = () => {
           )}
         </div>
 
-        {/* Hamburger Menu (on mobile) */}
         {isMenuOpen && (
           <div className="lg:hidden absolute top-[57px] left-0 right-0 bg-white z-10 shadow-md transition-transform duration-300">
             <ul className="flex flex-col items-center py-4">

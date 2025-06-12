@@ -6,7 +6,6 @@ const Services = () => {
   return (
     <section id="service" className="bg-[#3c3c3c] text-white py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* Headline Block */}
         <div className="text-left mb-16">
           <span className="text-[#ea4343] font-semibold uppercase text-sm block mb-2">
             Was ich anbiete
@@ -18,10 +17,7 @@ const Services = () => {
             mobiloptimiert, DSGVO-konform – mit klarem Fokus auf Kundennutzen.
           </p>
         </div>
-
-        {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {/* Starter-Paket */}
           <div className="bg-[#2f2f2f] rounded-xl p-8 group hover:scale-[1.03] transition-all duration-300 cursor-pointer relative overflow-hidden">
             <div className="flex items-start gap-4 mb-4">
               <Image src="/web.svg" alt="icon" width={48} height={48} />
@@ -40,7 +36,6 @@ const Services = () => {
             </ul>
           </div>
 
-          {/* Business-Paket */}
           <div className="bg-[#2f2f2f] rounded-xl p-8 group hover:scale-[1.03] transition-all duration-300 cursor-pointer relative overflow-hidden">
             <div className="flex items-start gap-4 mb-4">
               <Image src="/web.svg" alt="icon" width={48} height={48} />
@@ -62,7 +57,6 @@ const Services = () => {
             </ul>
           </div>
 
-          {/* Premium-Paket */}
           <div className="bg-[#2f2f2f] rounded-xl p-8 group hover:scale-[1.03] transition-all duration-300 cursor-pointer relative overflow-hidden">
             <div className="flex items-start gap-4 mb-4">
               <Image src="/web.svg" alt="icon" width={48} height={48} />

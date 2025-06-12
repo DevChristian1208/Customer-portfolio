@@ -17,7 +17,6 @@ const MyProjects = () => {
       id="portfolio"
       className="pt-[80px] pb-[80px] bg-gradient-to-br from-[#1e1e2f] via-[#2a2a3d] to-[#1e1e2f] relative overflow-hidden"
     >
-      {/* Farbige Kreise */}
       <div className="absolute top-[-60px] left-[-40px] w-[300px] h-[300px] bg-gradient-to-br from-[#ea4343] to-[#ff6b6b] opacity-30 blur-3xl rounded-full z-0" />
       <div className="absolute bottom-[-60px] right-[-40px] w-[250px] h-[250px] bg-gradient-to-br from-[#00ffd9] to-[#48c9b0] opacity-20 blur-2xl rounded-full z-0" />
 
@@ -108,7 +107,6 @@ const MyProjects = () => {
             </div>
           </div>
 
-          {/* MySkills - Direkte Integration nach den Projekten */}
           <div className="text-center text-white mb-10 mt-20">
             <span className="block text-lg">My Skills</span>
             <h3 className="text-5xl font-bold text-gradient">
