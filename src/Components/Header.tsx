@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const menuItems = [
   { href: "#home", label: "Home" },
@@ -29,12 +30,12 @@ const Header = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[70px] ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[58px] ${
         scrolled ? "bg-white shadow-md" : "bg-white lg:bg-transparent"
       }`}
     >
       <div className="max-w-[1600px] w-full px-6 sm:px-10 mx-auto">
-        <div className="w-full h-[70px] flex items-center justify-between py-[30px] transition-all duration-300">
+        <div className="w-full h-[57px] flex items-center justify-between py-[30px] transition-all duration-300">
           <div
             className={`logo text-xl font-bold font-['Press_Start_2P'] ${
               scrolled ? "text-[#ea4343]" : "text-[#ea4343]"
@@ -114,13 +115,18 @@ const Header = () => {
 
         {/* Hamburger Menu (on mobile) */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute top-[70px] left-0 right-0 bg-white z-10 shadow-md">
+          <div
+            className="lg:hidden absolute top-[57px] left-0 right-0 bg-white z-10 shadow-md transform transition-transform duration-300"
+            style={{
+              transform: isMenuOpen ? "translateY(0)" : "translateY(-100%)",
+            }}
+          >
             <ul className="flex flex-col items-center py-4">
               {menuItems.map((item, index) => (
                 <li
                   key={index}
                   className="py-2"
-                  onClick={() => setIsMenuOpen(false)} // Close menu on item click
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   <a
                     href={item.href}
