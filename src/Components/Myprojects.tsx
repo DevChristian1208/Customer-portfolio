@@ -6,7 +6,7 @@ const MyProjects = () => {
     "/html.png",
     "/css.png",
     "/javascript.png",
-    "/react.png",
+    "/nextjs.png",
     "/angular.png",
     "/typescript.png",
     "/firebase.png",
@@ -114,6 +114,9 @@ const MyProjects = () => {
             <h3 className="text-5xl font-bold text-gradient">
               Meine Fähigkeiten
             </h3>
+            <div className="text-section mt-6 text-center text-lg text-[#00ffc6]">
+              <p>Mit diesen Technologien arbeite ich aktuell.</p>
+            </div>
           </div>
 
           <div className="skills-container grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8">
@@ -127,28 +130,8 @@ const MyProjects = () => {
                   alt={`Skill Icon ${index}`}
                   className="skill-icon w-[80px] h-[80px] mb-2 transition-all duration-300 hover:opacity-80"
                 />
-                <span className="skill-name text-[#00ffd9] font-semibold">
-                  Skill {index + 1}
-                </span>
               </div>
             ))}
-          </div>
-
-          <div className="arrowDivResponsiveDiv mt-8 text-center">
-            <img src="./assets/Arrow 6.png" alt="Arrow" />
-          </div>
-
-          <div className="text-section mt-6 text-center text-lg text-[#00ffc6]">
-            <p>
-              Ich bin immer bereit, neue Technologien zu lernen. Sag mir
-              einfach, was du brauchst!
-            </p>
-          </div>
-
-          <div className="buttonDiv mt-6 flex justify-center">
-            <button className="cta-button bg-[#00ffc6] text-black px-6 py-3 rounded hover:bg-opacity-80 transition">
-              Lass uns sprechen
-            </button>
           </div>
         </div>
       </div>

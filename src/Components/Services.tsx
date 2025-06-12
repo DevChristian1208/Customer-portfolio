@@ -4,15 +4,18 @@ import Image from "next/image";
 
 const Services = () => {
   return (
-    <section id="services" className="bg-[#3c3c3c] text-white py-24 px-4">
+    <section id="service" className="bg-[#3c3c3c] text-white py-24 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Headline Block */}
         <div className="text-left mb-16">
-          <span className="text-[#ea4343] font-semibold uppercase text-sm block mb-2">Was ich anbiete</span>
+          <span className="text-[#ea4343] font-semibold uppercase text-sm block mb-2">
+            Was ich anbiete
+          </span>
           <h2 className="text-5xl font-bold mb-4">My Services</h2>
           <p className="text-gray-300 max-w-3xl">
-            Ich erstelle professionelle Websites für kleine Unternehmen wie Arztpraxen, Restaurants, Friseure oder Handwerksbetriebe.
-            Modern, mobiloptimiert, DSGVO-konform – mit klarem Fokus auf Kundennutzen.
+            Ich erstelle professionelle Websites für kleine Unternehmen wie
+            Arztpraxen, Restaurants, Friseure oder Handwerksbetriebe. Modern,
+            mobiloptimiert, DSGVO-konform – mit klarem Fokus auf Kundennutzen.
           </p>
         </div>
 
@@ -49,7 +52,9 @@ const Services = () => {
               </div>
             </div>
             <ul className="text-sm text-gray-300 space-y-2 list-disc list-inside">
-              <li>Mehrseitige Website (Start, Leistungen, Über uns, Kontakt)</li>
+              <li>
+                Mehrseitige Website (Start, Leistungen, Über uns, Kontakt)
+              </li>
               <li>SEO-Basics & Google-Optimierung</li>
               <li>CMS-Anbindung (z. B. Inhalte selbst pflegen)</li>
               <li>Kontakt- & Terminanfrage-Formular</li>

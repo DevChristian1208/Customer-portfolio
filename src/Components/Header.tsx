@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 
 const menuItems = [
   { href: "#home", label: "Home" },
@@ -36,11 +35,7 @@ const Header = () => {
     >
       <div className="max-w-[1600px] w-full px-6 sm:px-10 mx-auto">
         <div className="w-full h-[57px] flex items-center justify-between py-[30px] transition-all duration-300">
-          <div
-            className={`logo text-xl font-bold font-['Press_Start_2P'] ${
-              scrolled ? "text-[#ea4343]" : "text-[#ea4343]"
-            }`}
-          >
+          <div className="logo text-xl font-bold font-['Press_Start_2P'] text-[#ea4343]">
             &lt;CS&gt;
           </div>
 
@@ -76,26 +71,25 @@ const Header = () => {
 
                 {/* Hamburger Menu Button */}
                 <div
-                  className="lg:hidden flex items-center cursor-pointer"
+                  className="lg:hidden flex items-center cursor-pointer ml-4 group"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
-                  {/* Hamburger icon */}
-                  <div className="flex flex-col items-center justify-between space-y-2">
-                    <div
-                      className={`h-1 w-6 bg-black transition-all duration-300 ${
-                        isMenuOpen ? "rotate-45 translate-y-2" : ""
-                      }`}
-                    ></div>
-                    <div
-                      className={`h-1 w-6 bg-black transition-all duration-300 ${
-                        isMenuOpen ? "opacity-0" : ""
-                      }`}
-                    ></div>
-                    <div
-                      className={`h-1 w-6 bg-black transition-all duration-300 ${
-                        isMenuOpen ? "-rotate-45 -translate-y-2" : ""
-                      }`}
-                    ></div>
+                  <div className="relative w-6 h-6">
+                    <span
+                      className={`absolute h-1 w-full rounded origin-center transition-all duration-300 ${
+                        isMenuOpen ? "rotate-45 top-2.5" : "top-0"
+                      } bg-black group-hover:bg-[#ea4343] group-hover:scale-110`}
+                    />
+                    <span
+                      className={`absolute h-1 w-full rounded origin-center transition-all duration-300 top-2.5 ${
+                        isMenuOpen ? "opacity-0" : "opacity-100"
+                      } bg-black group-hover:bg-[#ea4343] group-hover:scale-110`}
+                    />
+                    <span
+                      className={`absolute h-1 w-full rounded origin-center transition-all duration-300 ${
+                        isMenuOpen ? "-rotate-45 top-2.5" : "bottom-0"
+                      } bg-black group-hover:bg-[#ea4343] group-hover:scale-110`}
+                    />
                   </div>
                 </div>
               </div>
@@ -115,12 +109,7 @@ const Header = () => {
 
         {/* Hamburger Menu (on mobile) */}
         {isMenuOpen && (
-          <div
-            className="lg:hidden absolute top-[57px] left-0 right-0 bg-white z-10 shadow-md transform transition-transform duration-300"
-            style={{
-              transform: isMenuOpen ? "translateY(0)" : "translateY(-100%)",
-            }}
-          >
+          <div className="lg:hidden absolute top-[57px] left-0 right-0 bg-white z-10 shadow-md transition-transform duration-300">
             <ul className="flex flex-col items-center py-4">
               {menuItems.map((item, index) => (
                 <li
@@ -130,13 +119,22 @@ const Header = () => {
                 >
                   <a
                     href={item.href}
-                    className={`no-underline font-semibold text-[#ea4343] transition-all duration-300 hover:text-[#ea4343]`}
+                    className="no-underline font-semibold text-black text-lg transition-all duration-300 hover:text-[#ea4343] hover:scale-105"
                   >
                     {item.label}
                   </a>
                 </li>
               ))}
             </ul>
+            <div className="flex justify-center gap-4 py-2 border-t border-gray-200">
+              <span className="cursor-pointer font-semibold text-black text-lg hover:text-[#ea4343] hover:scale-105">
+                EN
+              </span>
+              <span className="text-black text-lg">|</span>
+              <span className="cursor-pointer font-semibold text-black text-lg hover:text-[#ea4343] hover:scale-105">
+                DE
+              </span>
+            </div>
           </div>
         )}
       </div>
