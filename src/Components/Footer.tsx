@@ -15,7 +15,7 @@ const Footer = () => {
           &lt;CS&gt;
         </div>
 
-        {(isImpressum || isDatenschutz) && (
+        {!(isImpressum || isDatenschutz) && (
           <ul className="flex gap-6 text-sm text-gray-300">
             <li>
               <Link
