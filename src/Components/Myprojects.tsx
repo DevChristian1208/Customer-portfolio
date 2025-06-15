@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const MyProjects = () => {
   const skills = [
@@ -41,10 +41,22 @@ const MyProjects = () => {
   ];
 
   const [activeSkillIndex, setActiveSkillIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkSize = () => {
+      setIsMobile(window.innerWidth < 1000);
+    };
+    checkSize();
+    window.addEventListener("resize", checkSize);
+    return () => window.removeEventListener("resize", checkSize);
+  }, []);
 
   const handleToggle = (index: number) => {
     setActiveSkillIndex((prev) => (prev === index ? null : index));
   };
+
+  const closeDialog = () => setActiveSkillIndex(null);
 
   return (
     <section className="pt-20 pb-20 bg-[#1e1e2f] text-white">
@@ -169,29 +181,57 @@ const MyProjects = () => {
         </div>
 
         {activeSkillIndex !== null && (
-          <div className="bg-[#29293a] border border-[#00ffc6] rounded-xl p-6 relative w-[80vw] mx-auto shadow-lg animate-fade-in">
-            <button
-              onClick={() => setActiveSkillIndex(null)}
-              className="absolute top-3 right-4 text-xl text-[#00ffc6] hover:text-pink-500 transition cursor-pointer"
-            >
-              ✕
-            </button>
-            <div className="flex flex-col sm:flex-row items-center gap-6">
-              <img
-                src={skills[activeSkillIndex].img}
-                alt={skills[activeSkillIndex].name}
-                className="w-16 h-16"
-              />
-              <div>
-                <h3 className="text-2xl font-semibold mb-2">
-                  {skills[activeSkillIndex].name}
-                </h3>
-                <p className="text-gray-300 text-sm">
-                  {skills[activeSkillIndex].desc}
-                </p>
+          <>
+            {isMobile ? (
+              <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-[rgba(30,30,47,0.6)] backdrop-blur-md">
+                <div className="bg-[#29293a] rounded-xl p-6 relative w-full max-w-md mx-auto border border-[#00ffc6] shadow-lg">
+                  <button
+                    onClick={closeDialog}
+                    className="absolute top-3 right-4 text-xl text-[#00ffc6] hover:text-pink-500 transition cursor-pointer"
+                  >
+                    ✕
+                  </button>
+                  <div className="flex flex-col items-center gap-4">
+                    <img
+                      src={skills[activeSkillIndex].img}
+                      alt={skills[activeSkillIndex].name}
+                      className="w-16 h-16"
+                    />
+                    <h3 className="text-2xl font-semibold">
+                      {skills[activeSkillIndex].name}
+                    </h3>
+                    <p className="text-sm text-gray-300 text-center">
+                      {skills[activeSkillIndex].desc}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            ) : (
+              <div className="bg-[#29293a] border border-[#00ffc6] rounded-xl p-6 relative w-[80vw] mx-auto shadow-lg animate-fade-in">
+                <button
+                  onClick={closeDialog}
+                  className="absolute top-3 right-4 text-xl text-[#00ffc6] hover:text-pink-500 transition cursor-pointer"
+                >
+                  ✕
+                </button>
+                <div className="flex flex-col sm:flex-row items-center gap-6">
+                  <img
+                    src={skills[activeSkillIndex].img}
+                    alt={skills[activeSkillIndex].name}
+                    className="w-16 h-16"
+                  />
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-2">
+                      {skills[activeSkillIndex].name}
+                    </h3>
+                    <p className="text-gray-300 text-sm">
+                      {skills[activeSkillIndex].desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
     </section>
